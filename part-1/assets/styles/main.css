@@ -1,0 +1,46 @@
+body {
+  background-color: #e9e9e9;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  color: red;
+}
+
+h2 {
+  color: #000;
+  background-color: red;
+}
+
+nav {
+  background-color: #fff;
+  border: 1px solid blue;
+  padding: 12px;
+}
+nav span.first {
+  color: red;
+  cursor: pointer;
+}
+nav span.first:hover {
+  color: blue;
+}
+
+.manas {
+  color: red;
+}
+.manas .manas2 {
+  color: olive;
+}
+.manas .manas2:hover {
+  color: green;
+}
+
+button {
+  background-color: red;
+}
+button:hover {
+  background-color: green;
+}
+
+/*# sourceMappingURL=main.css.map */

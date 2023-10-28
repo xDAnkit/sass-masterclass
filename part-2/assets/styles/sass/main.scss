@@ -1,0 +1,11 @@
+@use "base";
+@use "reset";
+
+body {
+  background-color: base.$color-background;
+  color: base.$color-white;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  padding: 12px;
+}
