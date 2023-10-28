@@ -1,0 +1,33 @@
+.p10 {
+  padding: 10px;
+}
+
+%message-shared {
+  border: 1px solid #ccc;
+  padding: 10px;
+  color: #333;
+}
+
+%flex-common-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.success {
+  @extend %message-shared;
+  @extend %flex-common-row;
+  @extend .p10;
+  border-color: green;
+}
+
+.info {
+  @extend %message-shared;
+  @extend %flex-common-row;
+  border-color: blue;
+}
+
+.warning {
+  @extend %message-shared;
+  @extend %flex-common-row;
+  border-color: orange;
+}

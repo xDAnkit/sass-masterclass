@@ -1,0 +1,49 @@
+@use "sass:math";
+
+$colors: (
+  "info": #3498db,
+  "success": #27ae60,
+  "error": #e74c3c,
+  "warning": #f39c12,
+  "amar": "#3498db",
+);
+
+@each $type, $color in $colors {
+  .#{$type} {
+    background-color: $color;
+    color: white;
+    padding: 10px;
+    border: 1px solid $color;
+    margin: 10px;
+  }
+}
+
+// Define your breakpoints and column classes
+$breakpoints: (
+  xs: "",
+  sm: "sm",
+  md: "md",
+  lg: "lg",
+  xl: "xl",
+);
+
+$grid-columns: 12;
+
+// Create a mixin to generate column classes
+@mixin generate-columns() {
+  @each $breakpoint-name, $breakpoint-prefix in $breakpoints {
+    @for $i from 1 through $grid-columns {
+      $width: percentage($i / $grid-columns);
+      $rounded-width: math.round($width * 100) / 100;
+      $class-name: "col-#{$breakpoint-prefix}#{$i}";
+
+      .#{$class-name} {
+        flex: 0 0 #{$width};
+        max-width: #{$rounded-width};
+      }
+    }
+  }
+}
+
+// Use the mixin to generate column
+@include generate-columns();

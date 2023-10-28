@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:sass:1": "sass --watch part-1/assets/styles/sass:part-1/assets/styles",
     "build:sass:2": "sass --watch part-2/assets/styles/sass:part-2/assets/styles",
-    "build:sass:3": "sass --watch part-3/assets/styles/sass:part-3/assets/styles"
+    "build:sass:3": "sass --watch part-3/assets/styles/sass:part-3/assets/styles",
+    "build:sass:4": "sass --watch part-4/assets/styles/sass:part-4/assets/styles",
+    "build:sass:5": "sass --watch part-5/assets/styles/sass:part-5/assets/styles"
   },
   "keywords": [],
   "author": "",

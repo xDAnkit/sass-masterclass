@@ -1,0 +1,28 @@
+.p10, .success {
+  padding: 10px;
+}
+
+.warning, .info, .success {
+  border: 1px solid #ccc;
+  padding: 10px;
+  color: #333;
+}
+
+.warning, .info, .success {
+  display: flex;
+  flex-direction: row;
+}
+
+.success {
+  border-color: green;
+}
+
+.info {
+  border-color: blue;
+}
+
+.warning {
+  border-color: orange;
+}
+
+/*# sourceMappingURL=main.css.map */

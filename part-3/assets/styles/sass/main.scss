@@ -1,7 +1,12 @@
+@use "base";
+
 @mixin theme($theme: red, $color: white) {
   background-color: $theme;
   color: $color;
   box-shadow: 0 0 1px $theme;
+}
+body {
+  background-color: tomato;
 }
 
 .info {
@@ -18,4 +23,29 @@
 
 .primary {
   @include theme(blue, white);
+}
+
+/*Code to generate dynamic css*/
+
+$classToThemeMap: (
+  "info": (
+    background: LightBlue,
+    color: black,
+  ),
+  "alert": (
+    background: DarkRed,
+    color: white,
+  ),
+  "success": (
+    background: DarkGreen,
+    color: black,
+  ),
+);
+@each $class, $theme in $classToThemeMap {
+  .#{$class} {
+    @include theme(
+      $theme: map-get($theme, background),
+      $colorText: map-get($theme, color)
+    );
+  }
 }
