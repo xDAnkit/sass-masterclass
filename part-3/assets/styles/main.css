@@ -1,0 +1,25 @@
+.info {
+  background-color: red;
+  color: white;
+  box-shadow: 0 0 1px red;
+}
+
+.success {
+  background-color: green;
+  color: white;
+  box-shadow: 0 0 1px green;
+}
+
+.warning {
+  background-color: orange;
+  color: white;
+  box-shadow: 0 0 1px orange;
+}
+
+.primary {
+  background-color: blue;
+  color: white;
+  box-shadow: 0 0 1px blue;
+}
+
+/*# sourceMappingURL=main.css.map */

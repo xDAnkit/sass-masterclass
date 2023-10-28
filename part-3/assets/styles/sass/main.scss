@@ -1,0 +1,21 @@
+@mixin theme($theme: red, $color: white) {
+  background-color: $theme;
+  color: $color;
+  box-shadow: 0 0 1px $theme;
+}
+
+.info {
+  @include theme;
+}
+
+.success {
+  @include theme(green, white);
+}
+
+.warning {
+  @include theme(orange, white);
+}
+
+.primary {
+  @include theme(blue, white);
+}
