@@ -1,0 +1,113 @@
+$button-common-properties: (
+  font-size: $font-size-medium,
+  padding: 10px 20px,
+  border: none,
+  cursor: pointer,
+  transition: background-color 0.3s,
+  color 0.3s,
+);
+
+$button-styles: (
+  base: (
+    background-color: transparent,
+    color: inherit,
+  ),
+  sizes: (
+    100: (
+      font-size: 0.5rem,
+      padding: 0.5rem 1rem,
+    ),
+    200: (
+      font-size: 1rem,
+      padding: 1rem 2rem,
+    ),
+    // Add more sizes if needed
+  ),
+  types: (
+    primary: (
+      background-color: $primary-color,
+      color: white,
+    ),
+    secondary: (
+      background-color: $secondary-color,
+      color: white,
+    ),
+    link: (
+      color: $primary-color,
+      text-decoration: underline,
+    ),
+    bordered: (
+      background: $primary-color,
+      border: 2px solid $primary-color,
+      color: white,
+    ),
+    // Add more button types if needed
+  ),
+  icon: (
+    padding: 5px,
+    font-size: $font-size-medium,
+  ),
+);
+
+@mixin create-button-styles($style) {
+  .btn {
+    @include button-properties(
+      map-merge(map-get($style, base), $button-common-properties)
+    );
+  }
+
+  @each $size, $size-styles in map-get($style, sizes) {
+    .btn-#{$size} {
+      @include button-properties(
+        map-merge(
+          map-merge(map-get($style, base), $button-common-properties),
+          $size-styles
+        )
+      );
+    }
+  }
+
+  @each $type, $type-styles in map-get($style, types) {
+    .btn-#{$type} {
+      @include button-properties(
+        map-merge(
+          map-merge(map-get($style, base), $button-common-properties),
+          $type-styles
+        )
+      );
+      &:hover {
+        @include button-properties(
+          map-merge(
+            map-merge(map-get($style, base), $button-common-properties),
+            $type-styles
+          )
+        );
+      }
+    }
+  }
+
+  .icon-button {
+    @include button-properties(
+      map-merge(
+        map-merge(map-get($style, base), $button-common-properties),
+        map-get($style, icon)
+      )
+    );
+    &:hover {
+      @include button-properties(
+        map-merge(
+          map-merge(map-get($style, base), $button-common-properties),
+          map-get($style, icon)
+        )
+      );
+    }
+  }
+}
+
+@mixin button-properties($properties) {
+  @each $property, $value in $properties {
+    #{$property}: $value;
+  }
+}
+
+@include create-button-styles($button-styles);
