@@ -1,0 +1,194 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass mixins.
+// -----------------------------------------------------------------------------
+
+// _mixins.scss
+
+// Mixin for creating a media query
+@mixin media-query($size) {
+  @media only screen and (max-width: #{$size}) {
+    @content;
+  }
+}
+
+// Mixin for centering an element horizontally and vertically
+@mixin center-both {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// Mixin for clearfix
+@mixin clearfix() {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+// Mixin for text ellipsis
+@mixin text-ellipsis($width) {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: $width;
+}
+
+// Mixin for box shadow
+@mixin box-shadow($x, $y, $blur, $spread, $color) {
+  box-shadow: #{$x}px #{$y}px #{$blur}px #{$spread}px $color;
+}
+
+// Mixin for a smooth transition
+@mixin transition($properties, $duration) {
+  transition: $properties $duration;
+}
+
+// Mixin for flexbox container
+@mixin flex-container($direction, $justify, $align) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+// Mixin for setting font properties
+@mixin font($size, $weight, $line-height) {
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $line-height;
+}
+
+// Mixin for creating a gradient background
+@mixin gradient-background($start-color, $end-color) {
+  background: linear-gradient(to bottom, $start-color, $end-color);
+}
+
+// Mixin for creating a circular element
+@mixin circle($size, $bg-color) {
+  width: $size;
+  height: $size;
+  border-radius: 50%;
+  background-color: $bg-color;
+}
+
+// Mixin for adding vendor prefixes to CSS properties
+@mixin vendor-prefix($property, $value) {
+  -webkit-#{$property}: $value;
+  -moz-#{$property}: $value;
+  -ms-#{$property}: $value;
+  -o-#{$property}: $value;
+  #{$property}: $value;
+}
+
+// Mixin for creating a responsive font size based on viewport width
+@mixin responsive-font($min-font-size, $max-font-size, $min-width, $max-width) {
+  font-size: #{$min-font-size};
+  @media (min-width: $min-width) and (max-width: $max-width) {
+    font-size: calc(
+      #{$min-font-size} + (#{$max-font-size} - #{$min-font-size}) * ((
+              100vw - #{$min-width}
+            ) / (#{$max-width} - #{$min-width}))
+    );
+  }
+  @media (min-width: $max-width) {
+    font-size: #{$max-font-size};
+  }
+}
+
+// Mixin for creating a border radius with optional individual corners
+@mixin border-radius(
+  $radius,
+  $top-left: null,
+  $top-right: null,
+  $bottom-right: null,
+  $bottom-left: null
+) {
+  @if $top-left {
+    border-top-left-radius: $top-left;
+  }
+  @if $top-right {
+    border-top-right-radius: $top-right;
+  }
+  @if $bottom-right {
+    border-bottom-right-radius: $bottom-right;
+  }
+  @if $bottom-left {
+    border-bottom-left-radius: $bottom-left;
+  }
+  border-radius: $radius;
+}
+
+// Mixin for creating a gradient text effect
+@mixin gradient-text($start-color, $end-color) {
+  background: linear-gradient(to right, $start-color, $end-color);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+// Mixin for creating a responsive grid layout
+@mixin grid-layout($columns, $gap) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  gap: $gap;
+}
+
+// Mixin for creating a simple tooltip
+@mixin tooltip($bg-color, $text-color, $position: top) {
+  position: relative;
+  &:before {
+    content: "";
+    display: none;
+    position: absolute;
+    border-style: solid;
+  }
+  &::before {
+    display: block;
+    border-color: transparent;
+    border-width: 6px;
+    position: absolute;
+  }
+  @if $position == top {
+    &:before {
+      border-top-color: $bg-color;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+  @if $position == bottom {
+    &:before {
+      border-bottom-color: $bg-color;
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+  background-color: $bg-color;
+  color: $text-color;
+  padding: 5px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
+  font-size: 14px;
+}
+
+// Mixin for creating a responsive aspect ratio
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  &::before {
+    content: "";
+    display: block;
+    padding-top: (#{$height} / #{$width}) * 100%;
+  }
+  & > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+// Add more mixins as needed

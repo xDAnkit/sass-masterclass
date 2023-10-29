@@ -1,0 +1,33 @@
+@use "sass:math";
+
+$breakpoints: (
+  small: 576px,
+  medium: 768px,
+  large: 992px,
+  x-large: 1200px,
+);
+
+@mixin media-query($size) {
+  @media only screen and (max-width: #{$size}) {
+    @content;
+  }
+}
+
+@mixin column($columns) {
+  //for(let i = 1; i< columns.length; i++)
+  @for $i from 1 through $columns {
+    $width: math.div($i, $columns); // Use math.div() function for division
+    .col-#{$i} {
+      width: percentage($width);
+      float: left;
+      box-sizing: border-box;
+      padding: 0 15px; // Adjust the padding as needed
+    }
+  }
+}
+
+@each $breakpoint, $size in $breakpoints {
+  @include media-query($size) {
+    @include column(12);
+  }
+}
