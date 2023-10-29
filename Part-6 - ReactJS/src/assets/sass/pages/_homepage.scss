@@ -1,0 +1,7 @@
+@use "../base/variables" as base;
+
+.banner {
+  width: 100%;
+  padding: base.$padding;
+  background-color: base.$primary-color;
+}

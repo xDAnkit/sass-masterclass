@@ -14,6 +14,9 @@
 }
 
 .success {
+  background-color: green;
+  color: white;
+  box-shadow: 0 0 1px green;
   border-color: green;
 }
 
